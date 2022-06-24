@@ -17,12 +17,15 @@ func main() {
 		"http://instagram.com",
 	}
 
-	for _, server := range servers {
-		go checkServer(server, chanel)
-	}
+	i := 0
+	for i < 9 {
 
-	for i := 0; i < len(servers); i++ {
+		for _, server := range servers {
+			go checkServer(server, chanel)
+		}
+		time.Sleep(1 * time.Second)
 		fmt.Println(<-chanel)
+		i++
 	}
 
 	pastTime := time.Since(currentTime)
