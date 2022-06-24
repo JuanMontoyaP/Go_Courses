@@ -57,14 +57,9 @@ func main() {
 			t2,
 		},
 	}
-
-	fmt.Println(list.tasks[0])
-
 	list.addTaskToList(t3)
 
-	fmt.Println(len(list.tasks))
-
-	list.removeTaskFromList(1)
-	fmt.Println(len(list.tasks))
-
+	for index, task := range list.tasks {
+		fmt.Println("Index: ", index, " Task: ", task.name)
+	}
 }
