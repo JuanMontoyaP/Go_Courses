@@ -79,4 +79,10 @@ func main() {
 
 	list.tasks[0].markCompletedTask()
 	list.printCompletedList()
+
+	taskMap := make(map[string]*taskList)
+
+	taskMap["Juan"] = &list
+
+	taskMap["Juan"].printList()
 }
