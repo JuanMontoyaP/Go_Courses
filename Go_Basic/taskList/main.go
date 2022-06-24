@@ -32,6 +32,22 @@ func (tl *taskList) removeTaskFromList(index int) {
 	tl.tasks = append(tl.tasks[:index], tl.tasks[index+1:]...)
 }
 
+func (tl taskList) printList() {
+	for _, task := range tl.tasks {
+		fmt.Print("Name: ", task.name)
+		fmt.Println("-- Description: ", task.description)
+	}
+}
+
+func (tl taskList) printCompletedList() {
+	for _, task := range tl.tasks {
+		if task.completed {
+			fmt.Print("Name: ", task.name)
+			fmt.Println("-- Description: ", task.description)
+		}
+	}
+}
+
 func main() {
 	t1 := &task{
 		name:        "Complete my go course",
@@ -59,7 +75,8 @@ func main() {
 	}
 	list.addTaskToList(t3)
 
-	for index, task := range list.tasks {
-		fmt.Println("Index: ", index, " Task: ", task.name)
-	}
+	list.printList()
+
+	list.tasks[0].markCompletedTask()
+	list.printCompletedList()
 }
