@@ -23,6 +23,13 @@ func (s *Server) Listen() error {
 	}
 }
 
+func (s *Server) AddMiddleware(f http.HandlerFunc, middleware ...Middleware) http.HandlerFunc {
+	for _, m := range middleware {
+		f = m(f)
+	}
+	return f
+}
+
 func NewServer(port string) *Server {
 	return &Server{
 		port:   port,
